@@ -1,0 +1,28 @@
+{% extends 'html/base.html' %}
+{% block title %}creatnote{% endblock %}
+{% block content %}
+<div class="container-fluid mx-3">
+	<div class="card col-md-6 mx-auto mt-3 shadow-lg">
+		<div class="card-body">
+			<h2>View Note
+			<a href="{% url 'cn' %}" class="btn btn-warning float-right my-2">Add Notes</a></h2>
+			<table class="table table-borderless">
+				<tr>
+					<th>sno</th>
+					<th>Title</th>
+					<th>Description</th>
+					<th colspan="2">Actions</th>
+				</tr>
+				{% for n in r %}
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<td>{{n.title}}</td>
+					<td>{{n.description}}</td>
+					<td><a href="{% url 'updn' n.id %}" class="btn btn-success mx-1">Edit</a><a href="{% url 'del' n.id %}" class="btn btn-danger mx-1">Delete</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
